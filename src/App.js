@@ -10,14 +10,17 @@ const Button = ({handleClick, text}) => {
 
 const StatisticsLine = ({text, value}) => {
   return (
-    <p>{text} {value}</p>
+    <tr>
+      <td>{text}</td> 
+      <td>{value}</td>
+    </tr>
   )
 }
 
 
 const Statistics = (props) => {
   let sum = props.good+props.bad+props.neutral;
-  if(props.good == 0 && props.bad == 0 && props.neutral == 0) {
+  if(props.good === 0 && props.bad === 0 && props.neutral === 0) {
     return (
       <div>
         <h1>statistics</h1>
@@ -28,12 +31,23 @@ const Statistics = (props) => {
   return (
     <>
       <h1>statistics</h1>
-      <StatisticsLine text="good" value={props.good}/>
-      <StatisticsLine text="neutral" value={props.neutral}/>
-      <StatisticsLine text="bad" value={props.bad}/>
-      <p>all {sum}</p>
-      <p>average {(props.good+props.bad*-1)/sum}</p>
-      <p>positive {(props.good/sum)*100} %</p>
+      <table>
+        <StatisticsLine text="good" value={props.good}/>
+        <StatisticsLine text="neutral" value={props.neutral}/>
+        <StatisticsLine text="bad" value={props.bad}/>  
+        <tr>
+          <td>all</td>
+          <td>{sum}</td>
+        </tr>
+        <tr>
+          <td>average</td>
+          <td>{(props.good+props.bad*-1)/sum}</td>
+        </tr>
+        <tr>
+          <td>positive</td>
+          <td>{(props.good/sum)*100}</td>
+        </tr>
+      </table>
     </>
   )
 }
@@ -42,8 +56,7 @@ const App = () => {
   // save clicks of each button to its own state
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
-  const [bad, setBad] = useState(0)
-  const sum = good+neutral+bad;
+  const [bad, setBad] = useState(0);
 
   return (
     <div>
