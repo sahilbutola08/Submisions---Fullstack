@@ -1,11 +1,11 @@
 
 const Total = ({parts}) => {
     return (
-        <p>
-            Number of exercises {parts.reduce((prev, part) => {
+        <b>
+            total of {parts.reduce((prev, part) => {
                 return prev += part.exercises
-            }, 0)}
-        </p>
+            }, 0)} exercises
+        </b>
     )
 }
 
