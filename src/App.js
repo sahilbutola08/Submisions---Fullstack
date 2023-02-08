@@ -15,7 +15,9 @@ const App = () => {
 
   const newEntry = (e) => {
     e.preventDefault();
-    setPersons([...persons, {name: newName, id: ++count}]);
+    if(persons.find(value => newName.toLowerCase() == value.name.toLowerCase())) {
+      alert(`${newName} is already added to the phonebook`);
+    } else setPersons([...persons, {name: newName, id: ++count}]);
   }
 
   return (
